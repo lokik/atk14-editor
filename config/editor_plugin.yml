@@ -1,0 +1,51 @@
+#* Allowed controllers and its templates. All means all controllers in list
+#* 
+
+allowed: 
+    !all:
+    editor:
+        test_view.tpl:
+
+
+#*If set, the right to run sugit command (compiled, with setuid bit) will be granted
+#*    only to given group. To apply the change of this options you must remake them. 
+#permission-group: devel
+
+
+#* Regexp to dirname a filename allowed to edit
+allowed-dirname: /^[-a-zA-Z0-9_]+$/
+allowed-filename: /^[-a-zA-Z0-9_]+\.tpl$/
+
+#* If set, this method of controlle must return true in order to allow edit pages
+# authentication-method: _staff_user_logged 
+authentication-method: _plugin_editor_allow_edit
+#* Fail to authenticate if no such method exists. 
+force-authentication-method: false
+
+#* Allow edit from
+#* e.g. 84.42.130.240
+#* 84.42.130.240-84.42.130.248
+#* 84.42.130.2*
+#allowed-ip: 84.42.130.240, 127.0.0.1
+
+#* Allow edit pages only when hostname of site is
+#allowed-hostname: general-editor.localhost
+#* Edit link don't aim to current server, but to another, devel server
+#devel-server: general-editor.localhost
+
+
+#release-server: logik@localhost
+release:
+#   *Do push operation after commit
+     push: yes
+#    pull:
+#       *Do a pull operation on remote server 
+#       server:
+#       port:
+#       * How to perform pull
+#       * command(): run a git pull command in given directory
+#       * ssh: only ssh to given server, login shell is set so git pull is performed automaticly
+#       method: command        
+#       dir:
+
+#editable-blocks: perex, annotation, pagetitle
