@@ -530,7 +530,7 @@ class EditorPlugin extends Atk14Plugin
      if(DEVELOPMENT)
          $smarty->clear_compiled_tpl();
      if($this->allowed())
-         $this->registerScript(array('/cs/editor/js', 'jquery.simplemodal.1.4.2.min.js'));
+         $this->registerScript(array('/cs/editor/js', 'jquery.simplemodal.1.4.2.min.js'));     
      $smarty->register_prefilter(array($this, 'smartyFilter'));
      $this->useTemplates();
      }
