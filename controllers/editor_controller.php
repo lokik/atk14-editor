@@ -102,13 +102,20 @@
           if($this->params['commit'])
             {
             $referrer=$this->editor->getReferrer($dir, $file, 'edit');
-            $notice=_('Změny byly potvrzeny.');
-            $ret=$this->editor->commit($fullFile, $dir, $file);
+            $ret=$this->editor->commit($fullFile, $dir, $file, $push);
+            if(!$ret)
+              {
+              $notice=_('Změny byly potvrzeny');
+              if($push)
+                $notice.=_(' a odeslány na server');
+              $notice.='.';
+              }
             }
           else
             {
             $ret=$this->editor->checkout($fullFile, $dir, $file);
-            $notice=_('Všechny změny šablony byly zrušeny.');
+            if(!$ret)
+              $notice=_('Všechny změny šablony byly zrušeny.');
             $referrer=array('action' => 'edit', 'dir' => $dir, 'file' => $file);
             }
           if($ret==0)

@@ -343,14 +343,14 @@ class EditorPlugin extends Atk14Plugin
       return array_filter($this->edited);
       }
 
-   function commit($fullFile, $dir, $file=null, &$push)
+   function commit($fullFile, $dir, $file=null, &$push=null)
       {
       $this->sugit("commit " . escapeshellarg($fullFile) . " 'Změna '".escapeshellarg("$dir/$file"). "' skrze Atk14 editor' ", $ret);
       if(!$ret)
-      {
+        {
         $this->commited($dir, $file);
                   $this->push($ret, $push);
-      }
+        }
       return $ret;
       }
 
