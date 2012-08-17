@@ -7,4 +7,4 @@
 </ul>
 {render partial='editor/status'}
 <hr width='50%'>
-Zpět na seznam {a href='editor/index'}adresářů{/a}
+Seznam všech {a href='editor/index'}adresářů{/a}
