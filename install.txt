@@ -1,0 +1,22 @@
+Po instalaci pluginu a po každém přesunutí pluginu v adresářové hierarchii je třeba 
+znovu přeložit binární část pluginu. To provedete pomocí příkazu make (na free-bsd gmake).
+
+make clean
+make all
+
+To je nutné proto, že plugin spouští příkaz git s právy vlastníka souborů a níkoli
+s právy www serveru, proto je v balíčku binární program sugit, který spouští
+omezenou množinu funkcí gitu a jemuž je nastaven (v průběhu kompilace) setuid bit.
+Aby se předešlo zneužití tohoto programu, za jeho začátku změní tento program svůj
+pracovní adresář na adresář aplikace, ve které byl zkompilován. Proto je třeba
+při přesunu aplikace tento soubor znovu zkompilovat.
+
+Po instalaci je vhodné upravit soubor editor_plugin/config/editor_plugin.yml. Abyste
+nezasahovali do repozitáře pluginu, zkopírujte ho do <docroot>/config/ a upravte tuto
+kopii. V tomto souboru můžete nastavit, které šablony kterých kontrolérů jsou editovatelné
+a zabezpečení. 
+
+Další věc, kterou je třeba provést, je nastavit u patřičných šablon právo zápisu pro
+uživatele webového serveru. Nejlépe tak, že je zařadíte do skupiny webového serveru
+a dáte právo skupině pro zápis. Bohužel git tyto práva nezachovává a tak při některých
+operacích (pull) může dojít k vymazání těchto práv - v tom případě je třeba je obnovit.
