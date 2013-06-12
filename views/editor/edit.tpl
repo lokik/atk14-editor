@@ -1,6 +1,6 @@
 <h2>Editace statického obsahu {$dir}/{$file}</h2>
 <form method='post'>
-<textarea style='width: 95%;' rows='40' name='content'>{$content|h}</textarea>
+<textarea style='width: 95%;' rows='40' name='content'>{$content}</textarea>
 <input type='submit' value='Zmeň'>
 </form>
 <hr width='50%'>

@@ -576,11 +576,18 @@ class EditorPlugin extends Atk14Plugin
        #ugly hack to find out real template name
        if($file===null)
          {
-         $params['resource_name']=$smarty->_current_file;
-         $params['resource_base_path']=$smarty->template_dir;
-         if (!$smarty->_parse_resource_name($params))
-            return '<!--Cannot determine location of template file, cannot make content editable-->' . $source;
-         $file=realpath($params['resource_name']);
+         #smarty hack to get full file name and path for smarty 2.0, smarty 3.0 doesn't need it
+         if(method_exists($smarty, '_parse_resource_name')){	 
+         	 $params['resource_name']=$smarty->_current_file;
+         	 $params['resource_base_path']=$smarty->getTemplateDir();
+         
+         	 if (!$smarty->_parse_resource_name($params))
+         	 	 return '<!--Cannot determine location of template file, cannot make content editable-->' . $source;
+         	 $file= $params['resource_name'];
+         } else {
+           $file = $smarty->_current_file;
+         }
+         $file=realpath($file);
          $dir=htmlspecialchars(basename(dirname($file)));
          $file=substr(htmlspecialchars(basename($file)),0,-4);
          }

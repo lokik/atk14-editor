@@ -1,7 +1,8 @@
 <?
 function smarty_block_editable_($params, $content, $smarty)
 {
-  $editor=$smarty->_tpl_vars['plugin']['editor'];
+  $editor=$smarty->get_template_vars('plugin');
+  $editor=$editor['editor'];
   if(!$editor || !$editor->allowed() || !$editor->options->valid_action($params['dir'],$params['file'].'.tpl'))
       return $content;
   $smarty->assign($params);
