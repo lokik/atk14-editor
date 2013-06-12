@@ -20,7 +20,7 @@
 
     function index()
     {
-      $this->tpl_data['directories']=array_filter(scandir(__DIR__ . '/../views'),
+      $this->tpl_data['directories']=array_filter(scandir(__DIR__ . '/../../../app/views'),
                                       array($this->options, 'valid_directory'));
       $this->editor->fillStatus();
     }

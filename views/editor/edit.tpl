@@ -7,7 +7,7 @@
 {if $revert}
 <div>{a href='editor/revert' file=$file dir=$dir}Přehled změn tohoto souboru{/a}</div>
 {/if}
-<div>{a href='editor/directory' dir=$dir}Seznam šablon tohoto kontroléru{/a}</div>
+<div>{a href='editor/directory' dir=$dir}Seznam šablon v tomto adresáři{/a}</div>
 {if $plugin.editor->getReferrer($dir, $file)}
 <div>{a url=$plugin.editor->getReferrer($dir, $file)}Zpět{/a}</div>
 {/if}
