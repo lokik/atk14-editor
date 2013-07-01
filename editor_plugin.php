@@ -458,7 +458,7 @@ class EditorPlugin extends Atk14Plugin
     }
 
 
-  function push(&$ret=0, &$done)
+  function push(&$ret=0, &$done=0)
   {
     $done=0;
     if(!$this->options['release'])
