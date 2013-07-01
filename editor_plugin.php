@@ -48,8 +48,13 @@
         return false;
 
       $dir=__DIR__."/../../app/views/$controller";
+			#TODO - plugins are often separate projects 
+      #if(!is_dir($dir))
+      #  $dir=__DIR__."/../../plugins/$controller/views/$controller";
+
       if(!is_dir($dir))
         return false;
+
       if(is_string($this->options['allowed']))
         switch($this->options['allowed'])
           {
@@ -64,12 +69,12 @@
 
     function valid_action($controller, $action)
     {
-      if(!$this->valid_controller($controller)) 
+      if(!$dir = $this->valid_controller($controller)) 
           return false;
       if($this->options['allowed-filename'] && !preg_match($this->options['allowed-filename'], $action)) 
         return false;
 
-      $file=__DIR__."/../../app/views/$controller/$action";
+      $file="$dir/$action";
       if(!is_file($file) || !is_writable($file)) 
           return false;
       if(@is_string($this->options['allowed'][$controller]))
