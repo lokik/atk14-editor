@@ -1,6 +1,6 @@
 <h2>Editace části {$dir}/{$file}</h2>
 <form method='post' action='{link_to href='editor/revert' file=$file dir=$dir tag=$tag offset=$offset}'>
-<textarea style='width: 95%;' rows='10' id='editor__content' name='content'>{$content|h}</textarea>
+<textarea style='width: 95%;' rows='10' id='editor__content' name='content'>{$content}</textarea>
 {if $xhr}
 <button type='reset' onclick='$.modal.close()'>Zruš</button>
 <button id='editor__editbutton'>Změň</button>

@@ -1,6 +1,6 @@
 <h2>Přehled změn šablony {$dir}/{$file}</h2>
 <pre style='margin: 1em; overflow: auto; width=95%; position: relative; background: rgb(250,250,250)' >
-{$diff}
+{!$diff}
 </pre>
 <form method='post'>
 <input type='submit' value='Vrať všechny změny'>

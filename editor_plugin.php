@@ -64,13 +64,13 @@
 
     function valid_action($controller, $action)
     {
-      if(!$this->valid_controller($controller))
+      if(!$this->valid_controller($controller)) 
           return false;
-      if($this->options['allowed-filename'] && !preg_match($this->options['allowed-filename'], $action))
+      if($this->options['allowed-filename'] && !preg_match($this->options['allowed-filename'], $action)) 
         return false;
 
       $file=__DIR__."/../../app/views/$controller/$action";
-      if(!is_file($file) || !is_writable($file))
+      if(!is_file($file) || !is_writable($file)) 
           return false;
       if(@is_string($this->options['allowed'][$controller]))
         switch($this->options['allowed'][$controller])
